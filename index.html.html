@@ -3,442 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏆 Meu Diário de Treino - Evolução Contínua</title>
+    <title>Meu Diário de Treino & Evolução</title>
     <style>
         :root {
+            --bg-color: #f4f7f6;
             --card-bg: #ffffff;
-            --primary: #008542; /* Verde Oficial */
-            --accent: #cca322;  /* Dourado */
-            --dark-blue: #002d62; /* Azul */
-            --text-main: #112211;
-            --text-muted: #556655;
-            --border: #b3d1b9;
+            --primary: #2c3e50;
+            --accent: #27ae60;
+            --text-main: #333333;
+            --text-muted: #7f8c8d;
+            --border: #e2e8f0;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        body { 
-            background: linear-gradient(125deg, #0b2216, #008542, #cca322, #e6b800, #0b2216);
-            background-size: 400% 400%;
-            animation: fundoMovimento 15s ease infinite;
-            background-attachment: fixed;
-            color: var(--text-main); 
-            padding: 20px; 
-            line-height: 1.6; 
-        }
-
-        @keyframes fundoMovimento {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
+        body { background-color: var(--bg-color); color: var(--text-main); padding: 20px; line-height: 1.6; }
         .container { max-width: 800px; margin: 0 auto; }
-        
-        header { 
-            text-align: center; 
-            margin-bottom: 25px; 
-            background: linear-gradient(135deg, var(--primary), var(--dark-blue)); 
-            color: white; 
-            padding: 35px 30px; 
-            border-radius: 15px; 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4); 
-            border: 2px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-        }
-        header h1 { font-size: 28px; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-weight: 800; }
-        header p { font-size: 14px; opacity: 0.9; font-style: italic; color: #ffeb99; }
-        
-        /* Painel de Configuração */
-        .config-panel {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            border: 1px solid var(--border);
-        }
-        .config-title { font-size: 14px; font-weight: 700; color: var(--dark-blue); margin-bottom: 10px; }
-        .input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 15px; }
-        .input-grid .input-group { display: flex; flex-direction: column; }
-        .input-grid .input-group label { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
-        .input-grid .input-group input { padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--dark-blue); outline: none; }
-
-        /* Painel de Status */
-        .status-panel {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-            border-left: 6px solid var(--accent);
-        }
-        .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px; margin-top: 10px; }
-        .status-item { background: #f4f9f5; padding: 12px; border-radius: 8px; font-size: 13px; text-align: center; border: 1px solid var(--border); }
-        .status-item strong { display: block; font-size: 16px; color: var(--dark-blue); margin-top: 3px; }
-        .status-badge { background-color: var(--primary); color: white; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: bold; display: inline-block; margin-top: 5px; }
-
-        /* Abas */
-        .tabs { display: flex; overflow-x: auto; gap: 8px; margin-bottom: 20px; padding-bottom: 8px; }
-        .tabs::-webkit-scrollbar { height: 5px; }
-        .tabs::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
-        .tab-btn { 
-            background: rgba(0, 0, 0, 0.4); 
-            border: 1px solid rgba(255, 255, 255, 0.2); 
-            padding: 10px 18px; 
-            border-radius: 20px; 
-            cursor: pointer; 
-            font-weight: 700; 
-            color: #ffffff; 
-            white-space: nowrap; 
-            transition: all 0.2s ease; 
-        }
-        .tab-btn:hover { background: rgba(0, 0, 0, 0.6); border-color: var(--accent); }
-        .tab-btn.active { background: var(--accent); color: #0b2216; border-color: var(--accent); box-shadow: 0 4px 12px rgba(204,163,34,0.4); }
-        .tab-btn.rest-day-btn { border-style: dashed; }
-        .tab-btn.rest-day-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-
-        /* Conteúdo das Abas */
-        .workout-content { display: none; background: var(--card-bg); padding: 25px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); border: 1px solid var(--border); }
+        header { text-align: center; margin-bottom: 30px; background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        header h1 { font-size: 24px; margin-bottom: 10px; }
+        header p { font-size: 14px; opacity: 0.9; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px; }
+        .meta-item { background: rgba(255,255,255,0.2); padding: 10px; border-radius: 8px; font-size: 13px; }
+        .tabs { display: flex; overflow-x: auto; gap: 10px; margin-bottom: 20px; padding-bottom: 5px; }
+        .tab-btn { background: var(--card-bg); border: 1px solid var(--border); padding: 12px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; color: var(--primary); white-space: nowrap; transition: all 0.3s ease; }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .workout-content { display: none; background: var(--card-bg); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .workout-content.active { display: block; }
-        
-        .section-title { font-size: 18px; color: var(--dark-blue); margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #f0f7f4; display: flex; justify-content: space-between; align-items: center; font-weight: 700; }
+        .section-title { font-size: 18px; color: var(--primary); margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid var(--bg-color); display: flex; justify-content: space-between; align-items: center; }
         .exercise-list { list-style: none; }
-        .exercise-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #e8f2eb; justify-content: space-between; }
+        .exercise-item { display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border); justify-content: space-between; }
         .exercise-item:last-child { border-bottom: none; }
         
         .exercise-left { display: flex; align-items: center; flex-grow: 1; }
         .checkbox-wrapper { margin-right: 15px; }
-        .checkbox-wrapper input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--primary); }
+        .checkbox-wrapper input[type="checkbox"] { width: 22px; height: 22px; cursor: pointer; accent-color: var(--accent); }
         .exercise-details { flex-grow: 1; }
-        .exercise-name { font-weight: 600; color: var(--text-main); font-size: 16px; }
+        .exercise-name { font-weight: 600; color: var(--primary); font-size: 16px; }
         .exercise-meta { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
-        
-        /* Botão do YouTube Ajustado para Link */
+        .alert-box { background-color: #fff5f5; border-left: 4px solid #e53e3e; padding: 15px; border-radius: 8px; margin-top: 25px; font-size: 14px; }
+        .diet-box { background-color: #f0fff4; border-left: 4px solid var(--accent); padding: 15px; border-radius: 8px; margin-top: 25px; font-size: 14px; }
+
+        /* Estilo do Botão do YouTube */
         .yt-btn {
-            background-color: #ff0000; color: #ffffff; border: none; padding: 6px 12px; border-radius: 6px;
-            font-size: 12px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
-            transition: background 0.2s ease; white-space: nowrap; margin-left: 10px; text-decoration: none;
+            background-color: #e74c3c;
+            color: #ffffff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: background 0.2s ease;
+            white-space: nowrap;
+            margin-left: 10px;
         }
-        .yt-btn:hover { background-color: #cc0000; }
+        .yt-btn:hover { background-color: #c0392b; box-shadow: 0 2px 8px rgba(231,76,60,0.3); }
 
-        /* Mensagem de Descanso */
-        .rest-message { text-align: center; padding: 40px 20px; color: var(--text-muted); }
-        .rest-message h2 { color: var(--primary); margin-bottom: 10px; font-weight: 700; }
-        .rest-icon { font-size: 50px; margin-bottom: 15px; }
-
-        .alert-box { background-color: #fff5f5; border-left: 4px solid #e53e3e; padding: 15px; border-radius: 8px; margin-top: 15px; font-size: 14px; color: #c53030; }
-        .diet-box { background-color: #f0fff4; border-left: 4px solid var(--primary); padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 14px; }
-
-        /* Estilos de Evolução Dinâmica */
-        .progress-container { background: #f8fafc; border: 1px solid var(--border); padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: center; }
-        .progress-bar-bg { background: #e2e8f0; height: 16px; border-radius: 10px; overflow: hidden; margin-top: 8px; }
-        .progress-bar-fill { background: linear-gradient(90deg, #2ecc71, #27ae60); width: 0%; height: 100%; transition: width 0.4s ease; }
-        
-        .evolution-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
-        @media (max-width: 600px) { .evolution-dashboard { grid-template-columns: 1fr; } }
-        
-        .chart-box { background: #fff; border: 1px solid var(--border); padding: 15px; border-radius: 10px; }
-        .chart-bars { display: flex; justify-content: space-around; align-items: flex-end; height: 150px; padding-top: 20px; border-bottom: 2px solid #bdc3c7; }
-        .bar-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; position: relative; }
-        .bar { width: 25px; background: linear-gradient(to top, #2980b9, #3498db); border-radius: 4px 4px 0 0; transition: height 0.5s ease; }
-        .bar-label { font-size: 11px; color: var(--text-muted); margin-top: 5px; font-weight: 600; }
-        .bar-value { position: absolute; top: -20px; font-size: 10px; font-weight: bold; color: var(--primary); width: 100%; text-align: center; }
-
-        .history-box { background: #fff; border: 1px solid var(--border); padding: 15px; border-radius: 10px; }
-        .history-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        .history-table th, .history-table td { padding: 8px; text-align: left; border-bottom: 1px solid var(--border); }
-        
-        .btn-action { background-color: var(--primary); color: white; border: none; padding: 10px 16px; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; transition: background 0.2s; }
-        .btn-action:hover { background-color: var(--dark-blue); }
+        /* Estrutura da Janela Flutuante (Modal) do Vídeo */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(3px);
+        }
+        .modal-content {
+            background-color: #111;
+            padding: 10px;
+            border-radius: 12px;
+            width: 95%;
+            max-width: 640px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .close-modal:hover { color: #e74c3c; }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>🏆 Meu Diário de Treino</h1>
-        <p>A Grande Final: Massa Magra & Estabilização Postural</p>
+        <h1>Meu Diário de Treino</h1>
+        <p>Foco: Ganho de Massa Magra & Estabilização Postural</p>
+        <div class="meta-grid">
+            <div class="meta-item"><strong>Perfil:</strong> 28 anos | 1,68m | 55kg</div>
+            <div class="meta-item"><strong>Meta Passos:</strong> 8k a 10k / dia</div>
+            <div class="meta-item"><strong>Meta Peso:</strong> +3 a 6kg (6-12 meses)</div>
+        </div>
     </header>
 
-    <!-- Painel de Entrada de Dados (Idade, Peso, Altura) -->
-    <div class="config-panel">
-        <div class="config-title">⚙️ Configurações / Atualizar Dados Físicos</div>
-        <div class="input-grid">
-            <div class="input-group">
-                <label for="input-idade">Idade (anos)</label>
-                <input type="number" id="input-idade" value="28" oninput="atualizarMetricas()">
-            </div>
-            <div class="input-group">
-                <label for="input-altura">Altura (m)</label>
-                <input type="number" id="input-altura" value="1.68" step="0.01" oninput="atualizarMetricas()">
-            </div>
-            <div class="input-group">
-                <label for="input-peso">Peso (kg)</label>
-                <input type="number" id="input-peso" value="55.0" step="0.1" oninput="atualizarMetricas()">
-            </div>
-        </div>
-    </div>
-
-    <!-- Painel de Medição de IMC -->
-    <div class="status-panel">
-        <h3 style="color: var(--dark-blue); font-size: 16px;">📊 Escalada Física & Medição de IMC</h3>
-        <div class="status-grid">
-            <div class="status-item">Idade <strong id="display-idade">28 anos</strong></div>
-            <div class="status-item">Estatura <strong id="display-altura">1,68 m</strong></div>
-            <div class="status-item">Peso Atual <strong id="display-peso">55 kg</strong></div>
-            <div class="status-item">
-                IMC Corporal 
-                <strong id="display-imc">19.5 kg/m²</strong>
-                <span class="status-badge" id="display-badge">Peso Normal</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Abas Semanais Completas -->
     <div class="tabs">
-        <button class="tab-btn rest-day-btn active" onclick="openTab(event, 'segunda')">Seg (Descanso)</button>
-        <button class="tab-btn" onclick="openTab(event, 'terca')">Ter (Dia 1)</button>
-        <button class="tab-btn rest-day-btn" onclick="openTab(event, 'quarta')">Qua (Descanso)</button>
-        <button class="tab-btn" onclick="openTab(event, 'quinta')">Qui (Dia 2)</button>
-        <button class="tab-btn" onclick="openTab(event, 'sexta')">Sex (Dia 3)</button>
-        <button class="tab-btn" onclick="openTab(event, 'sabado')">Sáb (Dia 4)</button>
-        <button class="tab-btn rest-day-btn" onclick="openTab(event, 'domingo')">Dom (Descanso)</button>
-        <button class="tab-btn" onclick="openTab(event, 'nutricao')">🍏 Nutrição</button>
-        <button class="tab-btn" style="border-color: var(--accent);" onclick="openTab(event, 'progresso')">📈 Evolução</button>
+        <button class="tab-btn active" onclick="openTab(event, 'dia1')">Dia 1: Pernas + Core</button>
+        <button class="tab-btn" onclick="openTab(event, 'dia2')">Dia 2: Superior + Costas</button>
+        <button class="tab-btn" onclick="openTab(event, 'dia3')">Dia 3: Coxas + Mobilidade</button>
+        <button class="tab-btn" onclick="openTab(event, 'dia4')">Dia 4: Braços + Ombros</button>
+        <button class="tab-btn" onclick="openTab(event, 'info')">Nutrição & Cuidados</button>
     </div>
 
-    <!-- SEGUNDA (DESCANSO) -->
-    <div id="segunda" class="workout-content active">
-        <div class="rest-message">
-            <div class="rest-icon">🔋</div>
-            <h2>Intervalo Técnico - Regeneração</h2>
-            <p>Dia focado na recuperação muscular estrutural, controle postural no cotidiano e hidratação adequada.</p>
+    <div id="dia1" class="workout-content active">
+        <div class="section-title">Aquecimento <span>5 min</span></div>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Caminhada rápida/bicicleta + mobilidade ativa de quadril e tornozelos.</p>
+        
+        <div class="section-title">Exercícios Principais</div>
+        <ul class="exercise-list">
+            <li class="exercise-item">
+                <div class="exercise-left">
+                    <div class="checkbox-wrapper"><input type="checkbox"></div>
+                    <div class="exercise-details">
+                        <div class="exercise-name">1. Agachamento Goblet</div>
+                        <div class="exercise-meta">4 séries x 8 a 12 repetições | Descanso: 90s</div>
+                    </div>
+                </div>
+                <button class="yt-btn" onclick="playVideo('pLhInA_8Sno')">📺 Ver</button>
+            </li>
+            <li class="exercise-item">
+                <div class="exercise-left">
+                    <div class="checkbox-wrapper"><input type="checkbox"></div>
+                    <div class="exercise-details">
+                        <div class="exercise-name">2. Levantamento Terra Romeno (Halteres)</div>
+                        <div class="exercise-meta">4 séries x 8 a 10 repetições | Descanso: 90s</div>
+                    </div>
+                </div>
+                <button class="yt-btn" onclick="playVideo('e628YfWf_g8')">📺 Ver</button>
+            </li>
+            <li class="exercise-item">
+                <div class="exercise-left">
+                    <div class="checkbox-wrapper"><input type="checkbox"></div>
+                    <div class="exercise-details">
+                        <div class="exercise-name">3. Leg Press</div>
+                        <div class="exercise-meta">3 séries x 10 a 12 repetições | Descanso: 90s</div>
+                    </div>
+                </div>
+                <button class="yt-btn" onclick="playVideo('yO92g_m8-M4')">📺 Ver</button>
+            </li>
+            <li class="exercise-item">
+                <div class="exercise-left">
+                    <div class="checkbox-wrapper"><input type="checkbox"></div>
+                    <div class="exercise-details">
+                        <div class="exercise-name">4. Afundo Caminhando</div>
+                        <div class="exercise-meta">3 séries x 10 passos por perna | Descanso: 60s</div>
+                    </div>
+                </div>
+                <button class="yt-btn" onclick="playVideo('yZlA9NAtf_Y')">📺 Ver</button>
+            </li>
+            <li class="exercise-item">
+                <div class="exercise-left">
+                    <div class="checkbox-wrapper"><input type="checkbox"></div>
+                    <div class="exercise-details">
+                        <div class="exercise-name">5. Elevação de Panturrilhas</div>
+                        <div class="exercise-meta">4 séries x 15 repetições | Descanso: 45s</div>
+                    </div>
+                </div>
+                <button class="yt-btn" onclick="playVideo('p138_K_D-bU')">📺 Ver</button>
+            </li>
+        </ul>
+
+        <div class="section-title" style="margin-top: 25px;">Core & Cardio Estabilizador</div>
+        <ul class="exercise-list">
+            <li class="exercise-item">
+                <div class="exercise-left">
+                    <div class="checkbox-wrapper"><input type="checkbox"></div>
+                    <div class="exercise-details">
+                        <div class="exercise-name">6. Prancha Lateral</div>
+                        <div class="exercise-meta">3 séries x 30 a 45 segundos</div>
+                    </div>
+                </div>
+                <button class="yt-btn" onclick="playVideo('gE8w7gM-8_A')">📺 Ver</button>
+            </li>
+            <li class="exercise-item">
+                <div class="exercise-left">
+                    <div class="checkbox-wrapper"><input type="checkbox"></div>
+                    <div class="exercise-details">
+                        <div class="exercise-name">7. Bird Dog</div>
+                        <div class="exercise-meta">3 séries x 10 repetições por lado</div>
+                    </div>
+                </div>
+                <button class="yt-btn" onclick="playVideo('yGv1_8z8-Z8')">📺 Ver</button>
+            </li>
+        </ul>
+    </div>
+
+    <div id="dia2" class="workout-content">
+        <div class="section-title">Aquecimento <span>5 min</span></div>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Remo ergométrico leve para ativação dorsal.</p>
+        
+        <div class="section-title">Exercícios Principais</div>
+        <ul class="exercise-list">
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">1. Remada Sentada com Cabo</div><div class="exercise-meta">4 séries x 8 a 12 rep</div></div></div><button class="yt-btn" onclick="playVideo('y6k8_At8b_0')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">2. Puxada Frontal Aberta</div><div class="exercise-meta">4 séries x 8 a 12 rep</div></div></div><button class="yt-btn" onclick="playVideo('p1A8_G9eX_k')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">3. Supino Reto com Halteres</div><div class="exercise-meta">4 séries x 8 a 12 rep</div></div></div><button class="yt-btn" onclick="playVideo('yZ8m9_kA9X8')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">4. Remada Unilateral (Serrote)</div><div class="exercise-meta">3 séries x 10 rep por lado</div></div></div><button class="yt-btn" onclick="playVideo('eXwKzKExXgA')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">5. Desenvolvimento com Halteres</div><div class="exercise-meta">3 séries x 10 rep</div></div></div><button class="yt-btn" onclick="playVideo('pZ1mA_K9eXo')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">6. Face Pull</div><div class="exercise-meta">3 séries x 15 rep</div></div></div><button class="yt-btn" onclick="playVideo('q9e78X_A71Y')">📺 Ver</button></li>
+        </ul>
+        
+        <div class="section-title" style="margin-top: 25px;">Core & Cardio</div>
+        <ul class="exercise-list">
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">7. Dead Bug</div><div class="exercise-meta">3 séries x 10 rep por lado</div></div></div><button class="yt-btn" onclick="playVideo('1M8_Vb_V6F8')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">8. Pallof Press</div><div class="exercise-meta">3 séries x 12 rep por lado</div></div></div><button class="yt-btn" onclick="playVideo('p19z_K8mA_o')">📺 Ver</button></li>
+        </ul>
+    </div>
+
+    <div id="dia3" class="workout-content">
+        <div class="section-title">Aquecimento <span>5 min</span></div>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Bicicleta leve.</p>
+        
+        <div class="section-title">Exercícios Principais (Ênfase Unilateral)</div>
+        <ul class="exercise-list">
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">1. Agachamento Búlgaro</div><div class="exercise-meta">4 séries x 8 rep por perna</div></div></div><button class="yt-btn" onclick="playVideo('yP8z_At9Xk0')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">2. Mesa Flexora</div><div class="exercise-meta">4 séries x 10 rep</div></div></div><button class="yt-btn" onclick="playVideo('pZ8M_L9aX_A')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">3. Elevação Pélvica (Hip Thrust)</div><div class="exercise-meta">4 séries x 10 rep</div></div></div><button class="yt-btn" onclick="playVideo('y8Zm_M9kAxY')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">4. Step Up (Subida no banco)</div><div class="exercise-meta">3 séries x 12 rep por lado</div></div></div><button class="yt-btn" onclick="playVideo('p8Zm_L9eXkY')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">5. Panturrilhas em Pé</div><div class="exercise-meta">4 séries x 15 rep</div></div></div><button class="yt-btn" onclick="playVideo('p138_K_D-bU')">📺 Ver</button></li>
+        </ul>
+    </div>
+
+    <div id="dia4" class="workout-content">
+        <div class="section-title">Exercícios Principais</div>
+        <ul class="exercise-list">
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">1. Puxada Frontal (ou Barra Assistida)</div><div class="exercise-meta">4 séries x 8 a 10 rep</div></div></div><button class="yt-btn" onclick="playVideo('p1A8_G9eX_k')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">2. Remada Baixa com Triângulo</div><div class="exercise-meta">4 séries x 10 rep</div></div></div><button class="yt-btn" onclick="playVideo('y6k8_At8b_0')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">3. Supino Inclinado com Halteres</div><div class="exercise-meta">4 séries x 10 rep</div></div></div><button class="yt-btn" onclick="playVideo('yG8m_At9Xk4')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">4. Elevação Lateral de Ombros</div><div class="exercise-meta">3 séries x 15 rep</div></div></div><button class="yt-btn" onclick="playVideo('pZ1mA_K9eXo')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">5. Rosca Direta com Halteres</div><div class="exercise-meta">3 séries x 12 rep</div></div></div><button class="yt-btn" onclick="playVideo('y8Zm_M9kAxY')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">6. Tríceps Corda no Pulley</div><div class="exercise-meta">3 séries x 12 rep</div></div></div><button class="yt-btn" onclick="playVideo('yG8m_At9Xk4')">📺 Ver</button></li>
+        </ul>
+
+        <div class="section-title" style="margin-top: 25px;">Core Protetor</div>
+        <ul class="exercise-list">
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">7. Prancha Frontal Tradicional</div><div class="exercise-meta">3 séries x 40 segundos</div></div></div><button class="yt-btn" onclick="playVideo('gE8w7gM-8_A')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox"></div><div class="exercise-details"><div class="exercise-name">8. Farmer's Walk (Caminhada do Fazendeiro)</div><div class="exercise-meta">3 voltas de 30 metros</div></div></div><button class="yt-btn" onclick="playVideo('p8Zm_L9eXkY')">📺 Ver</button></li>
+        </ul>
+    </div>
+
+    <div id="info" class="workout-content">
+        <div class="diet-box">
+            <strong>Alimentação Hipertrófica (Meta: 90g a 120g de Proteína/dia)</strong><br><br>
+            • <b>Café da manhã:</b> 3 ovos, 2 fatias de pão integral, 1 banana e café.<br>
+            • <b>Almoço/Jantar:</b> Arroz, feijão, frango grelhado ou carne magra, salada abundante e azeite.<br>
+            • <b>Dica Extra:</b> Adicione gorduras boas (abacate, castanhas) e frutas para bater as calorias de ganho de massa.
         </div>
-    </div>
 
-    <!-- TERÇA (DIA 1 - INFERIORES + CORE) -->
-    <div id="terca" class="workout-content">
-        <div class="section-title">Exercícios Principais</div>
-        <ul class="exercise-list">
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">1. Agachamento Goblet</div><div class="exercise-meta">4 séries x 8 a 12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=pLhInA_8Sno" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">2. Levantamento Terra Romeno</div><div class="exercise-meta">4 séries x 8 a 10 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=e628YfWf_g8" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">3. Leg Press 45</div><div class="exercise-meta">3 séries x 10 a 12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yO92g_m8-M4" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">4. Afundo caminhando</div><div class="exercise-meta">3 séries x 10 passos por perna</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yZlA9NAtf_Y" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">5. Prancha lateral</div><div class="exercise-meta">3 séries x 30 a 45 segundos</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=gE8w7gM-8_A" target="_blank">📺 Ver</a></li>
-        </ul>
-        <button class="btn-action" onclick="salvarTreinoConcluido('Terça: Dia 1', 'terca')">💾 Finalizar e Salvar Treino</button>
-    </div>
-
-    <!-- QUARTA (DESCANSO) -->
-    <div id="quarta" class="workout-content">
-        <div class="rest-message">
-            <div class="rest-icon">🛡️</div>
-            <h2>Recuperação Estratégica</h2>
-            <p>Quarta-feira sem treino de força pesada. Ideal para focar na boa postura funcional.</p>
-        </div>
-    </div>
-
-    <!-- QUINTA (DIA 2 - COSTAS, PEITO E ESTABILIDADE) -->
-    <div id="quinta" class="workout-content">
-        <div class="section-title">Exercícios Principais</div>
-        <ul class="exercise-list">
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">1. Remada baixa sentada</div><div class="exercise-meta">4 séries x 8-12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=y6k8_At8b_0" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">2. Puxada frontal</div><div class="exercise-meta">4 séries x 8-12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=p1A8_G9eX_k" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">3. Supino com halteres</div><div class="exercise-meta">4 séries x 8-12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yZ8m9_kA9X8" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">4. Pallof Press</div><div class="exercise-meta">3 séries x 12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=p19z_K8mA_o" target="_blank">📺 Ver</a></li>
-        </ul>
-        <button class="btn-action" onclick="salvarTreinoConcluido('Quinta: Dia 2', 'quinta')">💾 Finalizar e Salvar Treino</button>
-    </div>
-
-    <!-- SEXTA (DIA 3 - INFERIORES) -->
-    <div id="sexta" class="workout-content">
-        <div class="section-title">Exercícios Principais</div>
-        <ul class="exercise-list">
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sexta')"></div><div class="exercise-details"><div class="exercise-name">1. Agachamento búlgaro</div><div class="exercise-meta">4 séries x 8 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yP8z_At9Xk0" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sexta')"></div><div class="exercise-details"><div class="exercise-name">2. Mesa flexora</div><div class="exercise-meta">4 séries x 10 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=pZ8M_L9aX_A" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sexta')"></div><div class="exercise-details"><div class="exercise-name">3. Elevação Pélvica</div><div class="exercise-meta">4 séries x 10 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=y8Zm_M9kAxY" target="_blank">📺 Ver</a></li>
-        </ul>
-        <button class="btn-action" onclick="salvarTreinoConcluido('Sexta: Dia 3', 'sexta')">💾 Finalizar e Salvar Treino</button>
-    </div>
-
-    <!-- SÁBADO (DIA 4 - BRAÇOS E OMBROS) -->
-    <div id="sabado" class="workout-content">
-        <div class="section-title">Exercícios Principais</div>
-        <ul class="exercise-list">
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sabado')"></div><div class="exercise-details"><div class="exercise-name">1. Elevação lateral com halteres</div><div class="exercise-meta">3 séries x 15 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=pZ1mA_K9eXo" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sabado')"></div><div class="exercise-details"><div class="exercise-name">2. Tríceps corda</div><div class="exercise-meta">3 séries x 12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yG8m_At9Xk4" target="_blank">📺 Ver</a></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sabado')"></div><div class="exercise-details"><div class="exercise-name">3. Farmer Walk</div><div class="exercise-meta">3 séries x 30 metros</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=p8Zm_L9eXkY" target="_blank">📺 Ver</a></li>
-        </ul>
-        <button class="btn-action" onclick="salvarTreinoConcluido('Sábado: Dia 4', 'sabado')">💾 Finalizar e Salvar Treino</button>
-    </div>
-
-    <!-- DOMINGO (DESCANSO) -->
-    <div id="domingo" class="workout-content">
-        <div class="rest-message">
-            <div class="rest-icon">☀️</div>
-            <h2>Fim de Ciclo - Descanso Inicial</h2>
-            <p>Prepare-se para alinhar os objetivos alimentares da próxima semana.</p>
-        </div>
-    </div>
-    
-    <!-- NUTRIÇÃO -->
-    <div id="nutricao" class="workout-content">
-        <div class="diet-box"><strong>🥩 Estratégia Alimentar Focada em Hipertrofia</strong></div>
-        <p>Bata sua meta de proteínas diárias (90g a 120g) e use alimentos densos caloricamente para auxiliar no ganho de peso saudável.</p>
         <div class="alert-box">
-            <strong>Lembrete Postural:</strong> Evite cargas axiais excessivas sobre a coluna (como agachamento livre pesado com barra nas costas). Priorize sempre a execução e estabilização do core.
+            <strong>Restrições importantes para sua coluna (Escoliose):</strong><br>
+            🚫 Evitar agachamento pesado com barra livre nas costas.<br>
+            🚫 Evitar levantamento terra tradicional com carga máxima.<br>
+            🚫 Evitar giros e rotações bruscas com carga pesada sobre a coluna.<br>
+            💡 <i>Sempre priorize a técnica perfeita antes de subir os pesos.</i>
         </div>
     </div>
-    
-    <!-- ABA DE EVOLUÇÃO (DADOS SALVOS) -->
-    <div id="progresso" class="workout-content">
-        <div class="section-title">📊 Aproveitamento do Treino Atual</div>
-        <div class="progress-container">
-            <span id="progress-text" style="font-weight: bold; color: var(--primary);">Nenhum exercício feito na aba ativa</span>
-            <div class="progress-bar-bg">
-                <div id="progress-fill" class="progress-bar-fill"></div>
-            </div>
-        </div>
+</div>
 
-        <div class="evolution-dashboard">
-            <!-- Mini Gráfico de Barras -->
-            <div class="chart-box">
-                <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 14px;">📈 Histórico Visual (Últimos 4)</h4>
-                <div class="chart-bars" id="chartBars">
-                    <div style="color: var(--text-muted); font-size:12px; margin: auto;">Sem treinos salvos</div>
-                </div>
-            </div>
-
-            <!-- Tabela de Histórico -->
-            <div class="history-box">
-                <h4 style="color: var(--primary); margin-bottom: 10px; font-size: 14px;">📋 Registros Guardados</h4>
-                <div style="max-height: 150px; overflow-y: auto;">
-                    <table class="history-table">
-                        <thead>
-                            <tr><th>Data</th><th>Treino</th><th>Aprov.</th></tr>
-                        </thead>
-                        <tbody id="historyBody">
-                            <tr><td colspan="3" style="text-align:center; color:var(--text-muted);">Histórico vazio</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <button class="btn-action" style="background-color: #e74c3c; margin-top: 10px; padding: 5px;" onclick="limparHistorico()">🗑️ Limpar Tudo</button>
-            </div>
+<div id="videoModal" class="video-modal" onclick="closeVideo()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="close-modal" onclick="closeVideo()">&times;</button>
+        <div class="video-container">
+            <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 </div>
 
 <script>
-    let abaAtualValida = 'terca';
-
     function openTab(evt, tabName) {
         var i, x, tablinks;
         x = document.getElementsByClassName("workout-content");
-        for (i = 0; i < x.length; i++) { x[i].style.display = "none"; }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
         tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); }
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
         document.getElementById(tabName).style.display = "block";
         if (evt) evt.currentTarget.className += " active";
-        
-        if(['terca', 'quinta', 'sexta', 'sabado'].includes(tabName)) {
-            abaAtualValida = tabName;
-            calcularProgressoDia(abaAtualValida);
-        } else {
-            document.getElementById("progress-fill").style.width = "0%";
-            document.getElementById("progress-text").innerText = "Aba de descanso ou informativa ativa.";
-        }
     }
 
-    // Atualização de Métricas Físicas e IMC
-    function atualizarMetricas() {
-        var idade = document.getElementById("input-idade").value;
-        var altura = parseFloat(document.getElementById("input-altura").value);
-        var peso = parseFloat(document.getElementById("input-peso").value);
-
-        document.getElementById("display-idade").innerText = idade + " anos";
-        document.getElementById("display-altura").innerText = altura.toFixed(2).replace('.', ',') + " m";
-        document.getElementById("display-peso").innerText = peso.toFixed(1).replace('.', ',') + " kg";
-
-        if (altura > 0 && peso > 0) {
-            var imc = peso / (altura * altura);
-            document.getElementById("display-imc").innerText = imc.toFixed(1) + " kg/m²";
-            var badge = document.getElementById("display-badge");
-            if (imc < 18.5) { badge.innerText = "Abaixo do Peso"; badge.style.backgroundColor = "#e53e3e"; }
-            else if (imc >= 18.5 && imc < 25) { badge.innerText = "Peso Normal"; badge.style.backgroundColor = "var(--primary)"; }
-            else { badge.innerText = "Sobrepeso"; badge.style.backgroundColor = "#cca322"; }
-        }
+    // Sistema Dinâmico de Player de Vídeo Seguro (Embed)
+    function playVideo(videoId) {
+        var modal = document.getElementById("videoModal");
+        var player = document.getElementById("videoPlayer");
+        // O formato /embed/ é obrigatório para não dar erro de segurança no navegador
+        player.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
+        modal.style.display = "flex";
     }
 
-    // Lógica Dinâmica de Progresso e LocalStorage
-    function calcularProgressoDia(tabId) {
-        const conteinerTab = document.getElementById(tabId);
-        if (!conteinerTab) return 0;
-        const checkboxes = conteinerTab.querySelectorAll('input[type="checkbox"]');
-        if(checkboxes.length === 0) return 0;
-        
-        const marcados = conteinerTab.querySelectorAll('input[type="checkbox"]:checked').length;
-        const porcentagem = Math.round((marcados / checkboxes.length) * 100);
-        
-        document.getElementById("progress-fill").style.width = porcentagem + "%";
-        document.getElementById("progress-text").innerText = `Aproveitamento de hoje: ${porcentagem}% (${marcados} de ${checkboxes.length} feitos)`;
-        return porcentagem;
+    function closeVideo() {
+        var modal = document.getElementById("videoModal");
+        var player = document.getElementById("videoPlayer");
+        player.src = ""; // Corta o carregamento e interrompe o áudio imediatamente
+        modal.style.display = "none";
     }
-
-    function salvarTreinoConcluido(nomeTreino, tabId) {
-        const aprov = calcularProgressoDia(tabId);
-        if(aprov === 0) {
-            alert("Marque pelo menos um exercício realizado para salvar!");
-            return;
-        }
-        
-        const dataAtual = new Date();
-        const dataFormatada = dataAtual.getDate().toString().padStart(2, '0') + '/' + (dataAtual.getMonth() + 1).toString().padStart(2, '0');
-        
-        let historico = JSON.parse(localStorage.getItem('historicoTreinos')) || [];
-        historico.unshift({ data: dataFormatada, treino: nomeTreino, porcentagem: aprov });
-        
-        if(historico.length > 20) historico.pop();
-        
-        localStorage.setItem('historicoTreinos', JSON.stringify(historico));
-        renderizarEvolucao();
-        alert("📊 Treino salvo com sucesso na aba Evolução!");
-    }
-
-    function renderizarEvolucao() {
-        const historico = JSON.parse(localStorage.getItem('historicoTreinos')) || [];
-        const tbody = document.getElementById("historyBody");
-        const chartBars = document.getElementById("chartBars");
-        
-        if(historico.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--text-muted);">Histórico vazio</td></tr>`;
-            chartBars.innerHTML = `<div style="color: var(--text-muted); font-size:12px; margin: auto;">Sem treinos salvos</div>`;
-            return;
-        }
-        
-        tbody.innerHTML = historico.map(t => `<tr><td>${t.data}</td><td>${t.treino}</td><td><strong>${t.porcentagem}%</strong></td></tr>`).join('');
-        
-        const ultimosQuatro = [...historico].slice(0, 4).reverse();
-        chartBars.innerHTML = ultimosQuatro.map(t => `
-            <div class="bar-wrapper">
-                <div class="bar-value">${t.porcentagem}%</div>
-                <div class="bar" style="height: ${t.porcentagem ? (t.porcentagem * 1.2) : 5}px;"></div>
-                <div class="bar-label">${t.data}</div>
-            </div>
-        `).join('');
-    }
-
-    function limparHistorico() {
-        if(confirm("Deseja apagar o histórico de evolução?")) {
-            localStorage.removeItem('historicoTreinos');
-            renderizarEvolucao();
-        }
-    }
-
-    window.onload = function() {
-        atualizarMetricas();
-        renderizarEvolucao();
-    };
 </script>
+
 </body>
 </html>
