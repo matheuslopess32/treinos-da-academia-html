@@ -114,10 +114,11 @@
         .exercise-name { font-weight: 600; color: var(--text-main); font-size: 16px; }
         .exercise-meta { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
         
+        /* Botão do YouTube Ajustado para Link */
         .yt-btn {
             background-color: #ff0000; color: #ffffff; border: none; padding: 6px 12px; border-radius: 6px;
             font-size: 12px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;
-            transition: background 0.2s ease; white-space: nowrap; margin-left: 10px;
+            transition: background 0.2s ease; white-space: nowrap; margin-left: 10px; text-decoration: none;
         }
         .yt-btn:hover { background-color: #cc0000; }
 
@@ -150,13 +151,6 @@
         
         .btn-action { background-color: var(--primary); color: white; border: none; padding: 10px 16px; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; margin-top: 15px; width: 100%; transition: background 0.2s; }
         .btn-action:hover { background-color: var(--dark-blue); }
-
-        /* Modal do Vídeo */
-        .video-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-        .modal-content { background-color: #111; padding: 10px; border-radius: 12px; width: 90%; max-width: 640px; position: relative; border: 2px solid var(--accent); }
-        .close-modal { position: absolute; top: -40px; right: 0; color: white; font-size: 30px; font-weight: bold; cursor: pointer; background: none; border: none; }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 6px; }
     </style>
 </head>
 <body>
@@ -227,11 +221,11 @@
     <div id="terca" class="workout-content">
         <div class="section-title">Exercícios Principais</div>
         <ul class="exercise-list">
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">1. Agachamento Goblet</div><div class="exercise-meta">4 séries x 8 a 12 repetições</div></div></div><button class="yt-btn" onclick="playVideo('pLhInA_8Sno')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">2. Levantamento Terra Romeno</div><div class="exercise-meta">4 séries x 8 a 10 repetições</div></div></div><button class="yt-btn" onclick="playVideo('e628YfWf_g8')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">3. Leg Press 45</div><div class="exercise-meta">3 séries x 10 a 12 repetições</div></div></div><button class="yt-btn" onclick="playVideo('yO92g_m8-M4')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">4. Afundo caminhando</div><div class="exercise-meta">3 séries x 10 passos por perna</div></div></div><button class="yt-btn" onclick="playVideo('yZlA9NAtf_Y')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">5. Prancha lateral</div><div class="exercise-meta">3 séries x 30 a 45 segundos</div></div></div><button class="yt-btn" onclick="playVideo('gE8w7gM-8_A')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">1. Agachamento Goblet</div><div class="exercise-meta">4 séries x 8 a 12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=pLhInA_8Sno" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">2. Levantamento Terra Romeno</div><div class="exercise-meta">4 séries x 8 a 10 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=e628YfWf_g8" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">3. Leg Press 45</div><div class="exercise-meta">3 séries x 10 a 12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yO92g_m8-M4" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">4. Afundo caminhando</div><div class="exercise-meta">3 séries x 10 passos por perna</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yZlA9NAtf_Y" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('terca')"></div><div class="exercise-details"><div class="exercise-name">5. Prancha lateral</div><div class="exercise-meta">3 séries x 30 a 45 segundos</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=gE8w7gM-8_A" target="_blank">📺 Ver</a></li>
         </ul>
         <button class="btn-action" onclick="salvarTreinoConcluido('Terça: Dia 1', 'terca')">💾 Finalizar e Salvar Treino</button>
     </div>
@@ -249,10 +243,10 @@
     <div id="quinta" class="workout-content">
         <div class="section-title">Exercícios Principais</div>
         <ul class="exercise-list">
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">1. Remada baixa sentada</div><div class="exercise-meta">4 séries x 8-12 repetições</div></div></div><button class="yt-btn" onclick="playVideo('y6k8_At8b_0')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">2. Puxada frontal</div><div class="exercise-meta">4 séries x 8-12 repetições</div></div></div><button class="yt-btn" onclick="playVideo('p1A8_G9eX_k')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">3. Supino com halteres</div><div class="exercise-meta">4 séries x 8-12 repetições</div></div></div><button class="yt-btn" onclick="playVideo('yZ8m9_kA9X8')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">4. Pallof Press</div><div class="exercise-meta">3 séries x 12 repetições</div></div></div><button class="yt-btn" onclick="playVideo('p19z_K8mA_o')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">1. Remada baixa sentada</div><div class="exercise-meta">4 séries x 8-12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=y6k8_At8b_0" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">2. Puxada frontal</div><div class="exercise-meta">4 séries x 8-12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=p1A8_G9eX_k" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">3. Supino com halteres</div><div class="exercise-meta">4 séries x 8-12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yZ8m9_kA9X8" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('quinta')"></div><div class="exercise-details"><div class="exercise-name">4. Pallof Press</div><div class="exercise-meta">3 séries x 12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=p19z_K8mA_o" target="_blank">📺 Ver</a></li>
         </ul>
         <button class="btn-action" onclick="salvarTreinoConcluido('Quinta: Dia 2', 'quinta')">💾 Finalizar e Salvar Treino</button>
     </div>
@@ -261,9 +255,9 @@
     <div id="sexta" class="workout-content">
         <div class="section-title">Exercícios Principais</div>
         <ul class="exercise-list">
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sexta')"></div><div class="exercise-details"><div class="exercise-name">1. Agachamento búlgaro</div><div class="exercise-meta">4 séries x 8 repetições</div></div></div><button class="yt-btn" onclick="playVideo('yP8z_At9Xk0')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sexta')"></div><div class="exercise-details"><div class="exercise-name">2. Mesa flexora</div><div class="exercise-meta">4 séries x 10 repetições</div></div></div><button class="yt-btn" onclick="playVideo('pZ8M_L9aX_A')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sexta')"></div><div class="exercise-details"><div class="exercise-name">3. Elevação Pélvica</div><div class="exercise-meta">4 séries x 10 repetições</div></div></div><button class="yt-btn" onclick="playVideo('y8Zm_M9kAxY')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sexta')"></div><div class="exercise-details"><div class="exercise-name">1. Agachamento búlgaro</div><div class="exercise-meta">4 séries x 8 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yP8z_At9Xk0" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sexta')"></div><div class="exercise-details"><div class="exercise-name">2. Mesa flexora</div><div class="exercise-meta">4 séries x 10 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=pZ8M_L9aX_A" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sexta')"></div><div class="exercise-details"><div class="exercise-name">3. Elevação Pélvica</div><div class="exercise-meta">4 séries x 10 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=y8Zm_M9kAxY" target="_blank">📺 Ver</a></li>
         </ul>
         <button class="btn-action" onclick="salvarTreinoConcluido('Sexta: Dia 3', 'sexta')">💾 Finalizar e Salvar Treino</button>
     </div>
@@ -272,9 +266,9 @@
     <div id="sabado" class="workout-content">
         <div class="section-title">Exercícios Principais</div>
         <ul class="exercise-list">
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sabado')"></div><div class="exercise-details"><div class="exercise-name">1. Elevação lateral com halteres</div><div class="exercise-meta">3 séries x 15 repetições</div></div></div><button class="yt-btn" onclick="playVideo('pZ1mA_K9eXo')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sabado')"></div><div class="exercise-details"><div class="exercise-name">2. Tríceps corda</div><div class="exercise-meta">3 séries x 12 repetições</div></div></div><button class="yt-btn" onclick="playVideo('yG8m_At9Xk4')">📺 Ver</button></li>
-            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sabado')"></div><div class="exercise-details"><div class="exercise-name">3. Farmer Walk</div><div class="exercise-meta">3 séries x 30 metros</div></div></div><button class="yt-btn" onclick="playVideo('p8Zm_L9eXkY')">📺 Ver</button></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sabado')"></div><div class="exercise-details"><div class="exercise-name">1. Elevação lateral com halteres</div><div class="exercise-meta">3 séries x 15 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=pZ1mA_K9eXo" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sabado')"></div><div class="exercise-details"><div class="exercise-name">2. Tríceps corda</div><div class="exercise-meta">3 séries x 12 repetições</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=yG8m_At9Xk4" target="_blank">📺 Ver</a></li>
+            <li class="exercise-item"><div class="exercise-left"><div class="checkbox-wrapper"><input type="checkbox" onchange="calcularProgressoDia('sabado')"></div><div class="exercise-details"><div class="exercise-name">3. Farmer Walk</div><div class="exercise-meta">3 séries x 30 metros</div></div></div><a class="yt-btn" href="https://www.youtube.com/watch?v=p8Zm_L9eXkY" target="_blank">📺 Ver</a></li>
         </ul>
         <button class="btn-action" onclick="salvarTreinoConcluido('Sábado: Dia 4', 'sabado')">💾 Finalizar e Salvar Treino</button>
     </div>
@@ -335,16 +329,6 @@
     </div>
 </div>
 
-<!-- MODAL DO PLAYER -->
-<div id="videoModal" class="video-modal" onclick="closeVideo()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <button class="close-modal" onclick="closeVideo()">&times;</button>
-        <div class="video-container">
-            <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-    </div>
-</div>
-
 <script>
     let abaAtualValida = 'terca';
 
@@ -367,7 +351,7 @@
     }
 
     // Atualização de Métricas Físicas e IMC
-    function actualizarMetricas() {
+    function atualizarMetricas() {
         var idade = document.getElementById("input-idade").value;
         var altura = parseFloat(document.getElementById("input-altura").value);
         var peso = parseFloat(document.getElementById("input-peso").value);
@@ -451,22 +435,8 @@
         }
     }
 
-    function playVideo(videoId) {
-        var modal = document.getElementById("videoModal");
-        var player = document.getElementById("videoPlayer");
-        player.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
-        modal.style.display = "flex";
-    }
-
-    function closeVideo() {
-        var modal = document.getElementById("videoModal");
-        var player = document.getElementById("videoPlayer");
-        player.src = "";
-        modal.style.display = "none";
-    }
-
     window.onload = function() {
-        actualizarMetricas();
+        atualizarMetricas();
         renderizarEvolucao();
     };
 </script>
